@@ -1,4 +1,4 @@
-# Credit Card Fraud Detection
+# Credit Risk Analysis
 
 ## Overview
 This project aims to build a machine learning model that can distinguish fraudulent transactions from legitimate ones using the Kaggle Credit Card Fraud Detection dataset. The goal is to minimize false positives while maximizing fraud detection accuracy.
