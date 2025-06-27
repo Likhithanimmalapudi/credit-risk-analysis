@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Risk Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            transition: opacity 0.5s ease-in-out;
+        }
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        form {
+            background: white;
+            max-width: 600px;
+            margin: 2em auto;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 0.5em 0 0.2em;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005599;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background: #003366;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Credit Risk Analysis Tool</h1>
+    </header>
+    <main>
+        <form id="credit-risk-form">
+            <h2>Enter Financial Details</h2>
+            <label for="income">Annual Income (USD):</label>
+            <input type="number" id="income" name="income" required>
+
+            <label for="loan">Loan Amount (USD):</label>
+            <input type="number" id="loan" name="loan" required>
+
+            <label for="dti">Debt-to-Income Ratio (%):</label>
+            <input type="number" id="dti" name="dti" step="0.01" required>
+
+            <label for="employment">Employment Type:</label>
+            <select id="employment" name="employment">
+                <option value="full-time">Full-Time</option>
+                <option value="part-time">Part-Time</option>
+                <option value="self-employed">Self-Employed</option>
+                <option value="unemployed">Unemployed</option>
+            </select>
+
+            <label for="comments">Comments or Reviews (Optional):</label>
+            <textarea id="comments" name="comments" placeholder="Enter your comments here..."></textarea>
+
+            <button type="submit">Analyze Risk</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2024 Credit Risk Analysis Tool. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('credit-risk-form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Simulated results
+            const riskResult = "Low";
+            const sentimentResult = "Positive";
+
+            // Add fade-out effect
+            document.body.style.opacity = '0';
+
+            setTimeout(() => {
+                const url = `result.html?risk=${encodeURIComponent(riskResult)}&sentiment=${encodeURIComponent(sentimentResult)}`;
+                window.location.href = url;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
