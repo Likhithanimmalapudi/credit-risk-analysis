@@ -59,24 +59,64 @@
         <h1>Credit Risk Analysis Tool</h1>
     </header>
     <main>
-        <form id="credit-risk-form">
+        <form id="credit-risk-form" method="POST" action="/predict">
             <h2>Enter Financial Details</h2>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
             <label for="income">Annual Income (USD):</label>
             <input type="number" id="income" name="income" required>
+
+            <label for="home">Home Ownership:</label>
+            <select id="home" name="home">
+                <option value="RENT">Rent</option>
+                <option value="OWN">Own</option>
+                <option value="MORTGAGE">Mortgage</option>
+                <option value="OTHER">Other</option>
+            </select>
+
+            <label for="emp_length">Employment Length (Years):</label>
+            <input type="number" id="emp_length" name="emp_length" required>
+
+            <label for="intent">Loan Intent:</label>
+            <select id="intent" name="intent">
+                <option value="PERSONAL">Personal</option>
+                <option value="EDUCATION">Education</option>
+                <option value="MEDICAL">Medical</option>
+                <option value="VENTURE">Venture</option>
+                <option value="HOMEIMPROVEMENT">Home Improvement</option>
+                <option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+            </select>
+
+            <label for="grade">Loan Grade:</label>
+            <select id="grade" name="grade">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+            </select>
 
             <label for="loan">Loan Amount (USD):</label>
             <input type="number" id="loan" name="loan" required>
 
-            <label for="dti">Debt-to-Income Ratio (%):</label>
-            <input type="number" id="dti" name="dti" step="0.01" required>
+            <label for="rate">Interest Rate (%):</label>
+            <input type="number" id="rate" name="rate" step="0.01" required>
 
-            <label for="employment">Employment Type:</label>
-            <select id="employment" name="employment">
-                <option value="full-time">Full-Time</option>
-                <option value="part-time">Part-Time</option>
-                <option value="self-employed">Self-Employed</option>
-                <option value="unemployed">Unemployed</option>
+            <label for="percent_income">Loan as % of Income:</label>
+            <input type="number" id="percent_income" name="percent_income" step="0.01" required>
+
+            <label for="default">Previous Default:</label>
+            <select id="default" name="default">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
             </select>
+
+            <label for="history">Credit History Length (Years):</label>
+            <input type="number" id="history" name="history" required>
 
             <label for="comments">Comments or Reviews (Optional):</label>
             <textarea id="comments" name="comments" placeholder="Enter your comments here..."></textarea>
@@ -87,25 +127,6 @@
     <footer>
         <p>© 2024 Credit Risk Analysis Tool. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        const form = document.getElementById('credit-risk-form');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Simulated results
-            const riskResult = "Low";
-            const sentimentResult = "Positive";
-
-            // Add fade-out effect
-            document.body.style.opacity = '0';
-
-            setTimeout(() => {
-                const url = `result.html?risk=${encodeURIComponent(riskResult)}&sentiment=${encodeURIComponent(sentimentResult)}`;
-                window.location.href = url;
-            }, 500);
-        });
-    </script>
 </body>
 </html>
+
