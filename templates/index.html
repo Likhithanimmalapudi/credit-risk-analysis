@@ -14,17 +14,23 @@
             color: white;
             font-family: 'Arial', sans-serif;
             height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .welcome-container, #form-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 0;
+            height: 100%;
+            padding: 2rem;
         }
 
-        .welcome-container {
+        .welcome-box {
             text-align: center;
             animation: fadeIn 2s ease-in-out;
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -60,25 +66,26 @@
             background-color: #ffd400;
         }
 
+        #form-container {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hide the form initially for smooth transition */
-        #form-container {
-            display: none;
-            animation: fadeIn 1s ease-in-out;
         }
     </style>
 </head>
 <body>
     <div id="welcome-container" class="welcome-container">
-        <!-- Logo Section -->
-        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Brand Logo" class="logo">
-        <h1>Welcome to Credit Risk Analysis</h1>
-        <p>Your reliable tool for secure and accurate credit risk assessment.</p>
-        <button id="get-started" class="btn btn-custom">Get Started</button>
+        <div class="welcome-box">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Brand Logo" class="logo">
+            <h1>Welcome to Credit Risk Analysis</h1>
+            <p>Your reliable tool for secure and accurate credit risk assessment.</p>
+            <button id="get-started" class="btn btn-custom">Get Started</button>
+        </div>
     </div>
 
     <div id="form-container" class="container text-center">
@@ -96,14 +103,17 @@
         const welcomeContainer = document.getElementById('welcome-container');
         const formContainer = document.getElementById('form-container');
 
-        // Smooth transition on button click
         getStartedButton.addEventListener('click', () => {
             welcomeContainer.style.opacity = '0';
             welcomeContainer.style.transition = 'opacity 0.5s ease';
-            
+
             setTimeout(() => {
                 welcomeContainer.style.display = 'none';
-                formContainer.style.display = 'block';
+                formContainer.style.display = 'flex';
+                formContainer.style.flexDirection = 'column';
+                formContainer.style.justifyContent = 'center';
+                formContainer.style.alignItems = 'center';
+                formContainer.style.opacity = '1';
             }, 500);
         });
     </script>
