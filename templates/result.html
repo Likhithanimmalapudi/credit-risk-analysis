@@ -15,32 +15,38 @@
             align-items: center;
             height: 100vh;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.6s ease-in-out;
         }
         .result-container {
             text-align: center;
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
             width: 400px;
         }
         h1 {
+            color: #003366;
             margin-bottom: 20px;
-            color: #333;
         }
         p {
             font-size: 18px;
-            margin-bottom: 20px;
-            color: #555;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
         }
         a {
             display: inline-block;
+            margin-top: 10px;
             text-decoration: none;
             background-color: #007bff;
             color: white;
             padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 16px;
         }
         a:hover {
@@ -50,22 +56,24 @@
 </head>
 <body>
     <div class="result-container">
-        <h1>Prediction Result</h1>
+        <h1>Credit Risk Analysis Result</h1>
         <p id="risk"></p>
         <p id="sentiment"></p>
-        <a href="main_form.html">Go Back</a>
+        <a href="main_form.html">Analyze Another</a>
     </div>
 
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const riskResult = urlParams.get('risk');
-        const sentimentResult = urlParams.get('sentiment');
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const riskResult = urlParams.get('risk') || "Not Available";
+            const sentimentResult = urlParams.get('sentiment') || "Not Available";
 
-        document.getElementById('risk').textContent = `Credit Risk Score: ${riskResult}`;
-        document.getElementById('sentiment').textContent = `Sentiment Analysis: ${sentimentResult}`;
+            document.getElementById('risk').innerHTML = `Credit Risk: <span class="highlight">${riskResult}</span>`;
+            document.getElementById('sentiment').innerHTML = `Sentiment: <span class="highlight">${sentimentResult}</span>`;
 
-        // Fade in the page after data is shown
-        document.body.style.opacity = '1';
+            document.body.style.opacity = '1';
+        });
     </script>
 </body>
 </html>
+
